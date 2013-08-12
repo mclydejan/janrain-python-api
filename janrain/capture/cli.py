@@ -106,7 +106,8 @@ class ApiArgumentParser(ArgumentParser):
                 message = "You did not specify the URL to the Capture API"
                 raise JanrainCredentialsError(message)
         
-        defaults = {k: credentials[k] for k in ('client_id', 'client_secret')}
+        defaults = {k: credentials[k] for k in ('application_id', 'client_id', 'client_secret')}
+        defaults['timeout'] = 120
         
         if api_class:
             return api_class(credentials['apid_uri'], defaults)

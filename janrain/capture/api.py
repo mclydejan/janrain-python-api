@@ -95,6 +95,7 @@ class Api(object):
             elif error.code == 404:
                 raise InvalidApiCallError(api_call, error.code)
             else:
+                print(error.fp.read())
                 raise error
         except URLError as error:
             if error.reason.errno == -2:
